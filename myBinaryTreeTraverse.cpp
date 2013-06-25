@@ -2,13 +2,53 @@
 #include <vector>
 #include <list>
 #include <stack>
+#include <iostream>
+#include <stdio.h>
 
-void LeftChildTraverse(myBTreeNodeP node)
+using namespace std;
+using namespace myBT;
+
+int visitNode(myBinaryTreeNode* node)
 {
-    stack<myBTreeNodeP> bstack;
-    myBTreeNodeP p = node;
-    while(p!=NULL)
-    {
-        bstack  
-    }
+    if (NULL == node)
+        cout<<-1<<"\t";
+    else
+        cout<<node->Value<<"\t";
+    return 0;
 }
+
+int LeftChildTraverse(myBinaryTreeNode* node)
+{
+    stack<myBinaryTreeNode*> bstack;
+    stack<int> tmpstack;
+    myBinaryTreeNode* p = node;
+    int cnt = 0;
+    while (p!=NULL || !bstack.empty())
+    {
+         while(p!=NULL)
+        {
+            //first traverse the
+
+            bstack.push(p->lchild);
+            tmpstack.push(cnt++);
+            p = p->lchild;
+
+        }
+
+        if(!bstack.empty())
+        {
+            p = bstack.top();
+            int tmp = tmpstack.top();
+            visitNode(p);
+            p = p->rchild;
+            tmpstack.pop();
+            bstack.pop();
+
+        }
+    }
+
+
+    return 0;
+}
+
+
