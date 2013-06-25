@@ -20,35 +20,42 @@ int visitNode(myBinaryTreeNode* node)
 int LeftChildTraverse(myBinaryTreeNode* node)
 {
     stack<myBinaryTreeNode*> bstack;
-    stack<int> tmpstack;
+    //stack<int> tmpstack;
     myBinaryTreeNode* p = node;
-    int cnt = 0;
-    while (p!=NULL || !bstack.empty())
-    {
-         while(p!=NULL)
-        {
-            //first traverse the
+    //int cnt = 0;
+	while(p!=NULL || !bstack.empty())
+	{
+		if(p!= NULL)
+		{
+			bstack.push(p);
+			p=p->lchild;
+		}
+		else
+		{
+			p = bstack.top();
+			visitNode(p);
+			bstack.pop();
+			p = p->rchild;
+		}
 
-            bstack.push(p->lchild);
-            tmpstack.push(cnt++);
-            p = p->lchild;
 
-        }
 
-        if(!bstack.empty())
-        {
-            p = bstack.top();
-            int tmp = tmpstack.top();
-            visitNode(p);
-            p = p->rchild;
-            tmpstack.pop();
-            bstack.pop();
+	}
 
-        }
-    }
+
+	
+   
+            
+
+        
+
+		
+
+        
 
 
     return 0;
+
+
+
 }
-
-
